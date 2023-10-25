@@ -16,11 +16,14 @@
   örnek output: ""
 */
 
-function dosyaAdiniBul(/* kodlar buraya */) {
-  // kodlar buraya
+function dosyaAdiniBul(yol) {
+  if(yol ==""){
+    return "";
+  }
+  let str1 =yol.split("/");
+  return str1[str1.length-1];
 }
-
-/*
+console.log(dosyaAdiniBul("C:/Users/johnsmith/Music/Beethoven_5.mp3"))/*
   GÖREV 2
   - Input:  Bir sayı arrayini parametre olarak alacak bir fonksiyon oluştur.
   - Output: Yazacağın fonksiyon input olarak aldığı sayı arrayinin aritmetik ortalamasını dönmeli.
@@ -38,8 +41,28 @@ function dosyaAdiniBul(/* kodlar buraya */) {
   örnek output: 104
 */
 
-function ortalamaBul(/* kodlar buraya */) {
-  // kodlar buraya
+function ortalamaBul(sayilar) {
+  if(sayilar.length==0){
+    return null;
+  }
+let toplam =sayilar.reduce((toplam ,item)=>{
+  return toplam+item;
+
+},0)
+let ortalama = toplam/sayilar.length;
+return ortalama;
+
+  /*if(sayilar.length==0){
+    return null
+  }
+  let toplam=0;
+  sayilar.forEach(sayi => {
+    toplam +=sayi;
+    
+    
+  });
+  ortalama =toplam/sayilar.length;
+  return ortalama;*/
 }
 
 /*
@@ -62,8 +85,28 @@ function ortalamaBul(/* kodlar buraya */) {
   örnek output: [109, 216, 288, 143, 185, 194]
 */
 
-function ortalamadanBuyukleriBul(/* kodlar buraya */) {
-  // kodlar buraya
+function ortalamadanBuyukleriBul(sayilar,ortalamaBul) {
+//reduce ile yapılış şekli :
+
+let ortalama = ortalamaBul(sayilar); 
+let result = sayilar.reduce((acc,sayi)=> {
+  if (sayi >= ortalama){
+    acc.push(sayi);
+}
+return acc;
+},[])
+return result;
+
+// for each ile yapılış şekli:
+  /*let ortalama = ortalamaBul(sayilar);
+  let result= [];
+  sayilar.forEach(sayi => {
+    if (sayi>=ortalama){
+      result.push(sayi);
+    }
+    
+  });
+  return result;*/
 }
 
 /* !!!! Burdan aşağısını değiştirmeyin !!!! */
